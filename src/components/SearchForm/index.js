@@ -16,7 +16,7 @@ function SearchForm(props) {
         />
       </div>
 
-      <h5>Include:</h5>
+      <h5>Limit Results To:</h5>
       <div className="form-check">
         <input 
           className="form-check-input" 

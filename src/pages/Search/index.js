@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SearchForm from "../../components/SearchForm";
-import API from "../../utilities/api";
+import searchAPI from "../../utilities/api";
 
 function Search() {
 
@@ -34,7 +34,11 @@ function Search() {
 
   const handleFormSubmit = event => {
     event.preventDefault();
-    console.log("HOT DAMN YOU DID IT");
+    searchAPI(searchParams).then( res => {
+      console.log(res);
+    }).catch( err => {
+      console.log(err);
+    });
   };
 
   return (

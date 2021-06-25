@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import SearchForm from "../../components/SearchForm";
 import searchAPI from "../../utilities/api";
+import { addNewSearch } from "../../store/actions/searches";
 
 function Search() {
 
@@ -12,6 +14,8 @@ function Search() {
     sortBy: "relevance"
   });
   const [searchResults, setSearchResults] = useState([]);
+
+  const dispatch = useDispatch();
 
   const handleInputChange = event => {
     const target = event.target;
@@ -26,6 +30,7 @@ function Search() {
 
   const handleFormSubmit = event => {
     event.preventDefault();
+    dispatch(addNewSearch(searchParams));
     searchAPI(searchParams).then( res => {
       console.log(res);
     }).catch( err => {

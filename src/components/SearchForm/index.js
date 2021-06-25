@@ -54,31 +54,6 @@ function SearchForm(props) {
         <label className="form-check-label" htmlFor="type3">Polls</label>
       </div>
 
-      {/* <h5>Filters:</h5>
-      <input type="checkbox" id="filter1" name="filterByAuthor" value="author" />
-      <label for="filter1">Author</label>
-      <input type="text" id="author" name="author" /><br />
-      <input type="checkbox" id="filter2" name="filterByPoints" value="points" />
-      <label for="filter2">Points</label>
-      <select id="points-operator" name="pointsOperator" value={props.pointsOperator}>
-        <option value="greater">more than</option>
-        <option value="greater-equal">at least</option>
-        <option value="equal">exactly</option>
-        <option value="less-equal">at most</option>
-        <option value="less">less than</option>
-      </select>
-      <input type="text" id="numPoints" name="numPoints" /><br />
-      <input type="checkbox" id="filter3" name="filterByComments" value="comments" />
-      <label for="filter3">Comments</label>
-      <select id="comments-operator" name="commentsOperator">
-        <option value="greater">more than</option>
-        <option value="greater-equal">at least</option>
-        <option value="equal">exactly</option>
-        <option value="less-equal">at most</option>
-        <option value="less">less than</option>
-      </select>
-      <input type="text" id="numComments" name="numComments" /><br /> */}
-
       <h5>Sort By:</h5>
       <div className="form-check">
         <input 

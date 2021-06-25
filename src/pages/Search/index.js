@@ -9,14 +9,6 @@ function Search() {
     includeStories: true,
     includeComments: false,
     includePolls: false,
-    // filterByAuthor: false,
-    // author: "",
-    // filterByPoints: false,
-    // pointsOperator: "greater",
-    // numPoints: "",
-    // filterByComments: false,
-    // commentsOperator: "greater",
-    // numComments: "",
     sortBy: "relevance"
   });
   const [searchResults, setSearchResults] = useState([]);

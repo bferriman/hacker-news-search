@@ -4,7 +4,7 @@ import "./style.css";
 function SearchForm(props) {
   return (
     <form onSubmit={props.onSubmit}>
-      <div className="form-group">
+      <div className="form-group mb-3">
         <label htmlFor="searchText">Search:</label>
         <input 
           type="text" 
@@ -41,7 +41,7 @@ function SearchForm(props) {
         />
         <label className="form-check-label" htmlFor="type2">Comments</label>
       </div>
-      <div className="form-check">
+      <div className="form-check mb-3">
         <input 
           className="form-check-input" 
           type="checkbox" 
@@ -67,7 +67,7 @@ function SearchForm(props) {
         />
         <label className="form-check-label" htmlFor="relevance">Relevance</label>
       </div>
-      <div className="form-check">
+      <div className="form-check mb-3">
         <input 
           className="form-check-input" 
           type="radio" 
@@ -79,7 +79,7 @@ function SearchForm(props) {
         />
         <label className="form-check-label" htmlFor="date">Most Recent</label>
       </div>
-      <button type="submit" className="btn btn-primary">Search</button>
+      <button type="submit" className="btn btn-primary mb-4">Search</button>
     </form>
   );
 }

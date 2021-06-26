@@ -12,9 +12,14 @@ function Search() {
     includeStories: true,
     includeComments: false,
     includePolls: false,
-    sortBy: "relevance"
+    sortBy: "relevance",
+    page: 1
   });
   const [searchResults, setSearchResults] = useState([]);
+  const [pageData, setPageData] = useState({
+    currentPage: 0,
+    numPages: 0
+  });
 
   const dispatch = useDispatch();
 
@@ -32,13 +37,50 @@ function Search() {
   const handleFormSubmit = event => {
     event.preventDefault();
     dispatch(addNewSearch(searchParams));
-    searchAPI(searchParams).then( res => {
+    searchAPI(searchParams, 0).then( res => {
       console.log(res);
       setSearchResults(res.data.hits);
+      setPageData({
+        currentPage: res.data.page,
+        numPages: res.data.nbPages
+      });
     }).catch( err => {
       console.log(err);
     });
   };
+
+  const handlePrevButton = event => {
+    console.log("previous clicked");
+    if (pageData.currentPage <= 0) {
+      return;
+    }
+    searchAPI(searchParams, pageData.currentPage - 1).then( res => {
+      setSearchResults(res.data.hits);
+      setPageData({
+        currentPage: res.data.page,
+        numPages: res.data.nbPages
+      });
+    }).catch( err => {
+      console.log(err);
+    });
+  }
+
+  const handleNextButton = event => {
+    console.log("next clicked");
+    if (pageData.currentPage >= pageData.numPages - 1) {
+      return;
+    }
+    searchAPI(searchParams, pageData.currentPage + 1).then( res => {
+      setSearchResults(res.data.hits);
+      setPageData({
+        currentPage: res.data.page,
+        numPages: res.data.nbPages
+      });
+    }).catch( err => {
+      console.log(err);
+    });
+  }
+
 
   return (
     <div className="container">
@@ -49,6 +91,21 @@ function Search() {
         </div>
         <div className="col-lg-8">
           <SearchResults data={searchResults} />
+          <div className={searchResults.length === 0 ? "invisible" : undefined}>
+            <button 
+              className={pageData.currentPage <= 0 ? "btn btn-primary m-2 disabled" : "btn btn-primary m-2"}
+              onClick={handlePrevButton}
+            >
+              Prev
+            </button>
+            <button 
+              className={pageData.currentPage >= pageData.numPages - 1 ? "btn btn-primary m-2 disabled" : "btn btn-primary m-2"}
+              onClick={handleNextButton}
+            >
+              Next
+            </button>
+            <span>Page {pageData.currentPage + 1} of {pageData.numPages}</span>
+          </div>
         </div>
       </div>
     </div>

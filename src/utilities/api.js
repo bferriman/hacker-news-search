@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const searchAPI = params => {
+const searchAPI = (params, page) => {
   // configure URL for sort by relevance or date
   let queryURL = `http://hn.algolia.com/api/v1/${params.sortBy === "relevance" ? "search" : "search_by_date"}?`;
 
@@ -24,6 +24,9 @@ const searchAPI = params => {
   if (includedContent.length > 1) {
     queryURL += `tags=(${includedContent})`;
   }
+
+  // add page controls
+  queryURL += `&page=${page}&hitsPerPage=6`;
   
   return axios.get(queryURL);
 };

@@ -6,7 +6,7 @@ const searchAPI = params => {
 
   // add query for search text 
   if (params.searchText) {
-    const queryStr = params.searchText.trim().replace(/\s/g, "%20");
+    const queryStr = params.searchText.trim().replace(/\s/g, "%20").replace("&", "%26");
     queryURL += `query=${queryStr}`;
   }
   

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import SearchForm from "../../components/SearchForm";
+import SearchResults from "../../components/SearchResults";
 import searchAPI from "../../utilities/api";
 import { addNewSearch } from "../../store/actions/searches";
 
@@ -33,6 +34,7 @@ function Search() {
     dispatch(addNewSearch(searchParams));
     searchAPI(searchParams).then( res => {
       console.log(res);
+      setSearchResults(res.data.hits);
     }).catch( err => {
       console.log(err);
     });
@@ -41,9 +43,12 @@ function Search() {
   return (
     <div className="container">
       <div className="row">
-        <div className="col">
-          <h1>this is the Search page</h1>
+        <div className="col-lg-4 mt-2">
+          <h2>Search Hacker News</h2>
           <SearchForm formState={searchParams} onChange={handleInputChange} onSubmit={handleFormSubmit} />
+        </div>
+        <div className="col-lg-8">
+          <SearchResults data={searchResults} />
         </div>
       </div>
     </div>

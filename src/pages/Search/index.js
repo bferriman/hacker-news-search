@@ -38,7 +38,6 @@ function Search() {
     event.preventDefault();
     dispatch(addNewSearch(searchParams));
     searchAPI(searchParams, 0).then( res => {
-      console.log(res);
       setSearchResults(res.data.hits);
       setPageData({
         currentPage: res.data.page,
@@ -50,7 +49,6 @@ function Search() {
   };
 
   const handlePrevButton = event => {
-    console.log("previous clicked");
     if (pageData.currentPage <= 0) {
       return;
     }
@@ -66,7 +64,6 @@ function Search() {
   }
 
   const handleNextButton = event => {
-    console.log("next clicked");
     if (pageData.currentPage >= pageData.numPages - 1) {
       return;
     }

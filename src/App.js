@@ -6,7 +6,6 @@ import { Provider } from "react-redux";
 import Search from "./pages/Search";
 import History from "./pages/History";
 import NavTabs from "./components/NavTabs";
-import './App.css';
 import searchesReducer from "./store/reducers/searches";
 
 const store = createStore(searchesReducer);

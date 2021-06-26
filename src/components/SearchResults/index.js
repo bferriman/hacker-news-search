@@ -1,6 +1,5 @@
 import React from "react";
 import NewsItem from "../NewsItem";
-import "./style.css";
 
 
 function SearchResults(props) {

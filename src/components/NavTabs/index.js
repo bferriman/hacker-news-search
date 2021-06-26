@@ -8,18 +8,20 @@ function NavTabs() {
 
   return (
     <nav className="navbar navbar-expand navbar-light">
-      <ul className="navbar-nav px-3">
-        <li className="nav-item me-4">
-          <Link to="/search" className={location.pathname === "/search" || location.pathname === "/" ? "nav-link active" : "nav-link"}>
-            Search
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/history" className={location.pathname === "/history" ? "nav-link active" : "nav-link"}>
-            History
-          </Link>
-        </li>
-      </ul>
+      <div className="container">
+        <ul className="navbar-nav">
+          <li className="nav-item me-5">
+            <Link to="/search" className={location.pathname === "/search" || location.pathname === "/" ? "nav-link active px-0" : "nav-link px-0"}>
+              Search
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/history" className={location.pathname === "/history" ? "nav-link active px-0" : "nav-link px-0"}>
+              History
+            </Link>
+          </li>
+        </ul>
+      </div>
     </nav>
   );
 }
